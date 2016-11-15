@@ -51,4 +51,4 @@ def read_callback():
     plugin.get_stats()
     
 collectd.register_config(configure_callback)
-collectd.register_read(read_callback, 10)
+collectd.register_read(read_callback, plugin.interval)

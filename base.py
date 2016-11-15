@@ -15,10 +15,11 @@ class Base(object):
         self.password            = 'admin'
         self.project             = 'project'
         self.url                 = 'http://api.example.com:5000/v3'
-        self.user_domain_id      = 'default',
-        self.user_domain_name    = 'default',
-        self.project_domain_id   = 'default',
-        self.project_domain_name = 'default',
+        self.user_domain_id      = 'default'
+        self.user_domain_name    = 'default'
+        self.project_domain_id   = 'default'
+        self.project_domain_name = 'default'
+        self.interval            = 30
 
     def config_callback(self, conf):
         for node in conf.children:
@@ -30,6 +31,8 @@ class Base(object):
                 self.url = node.values[0]
             elif node.key == "Project":
                 self.project = node.values[0]
+            elif node.key == "Interval":
+                self.interval = node.values[0]
 
     def get_keystone(self):
         kauth = v3.Password(
