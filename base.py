@@ -35,6 +35,7 @@ class Base(object):
                 self.interval = node.values[0]
 
     def get_keystone(self):
+
         kauth = v3.Password(
             auth_url=self.url,
             password=self.password,

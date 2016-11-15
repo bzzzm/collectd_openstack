@@ -12,12 +12,13 @@ class NovaComputePlugin(base.Base):
 
     def __init__(self):
         base.Base.__init__(self)
-        self.ksession = self.get_keystone()
-        self.nova = client.Client(2, session=self.ksession)
 
         self.hostname = socket.gethostname()
 
     def get_stats(self):
+        self.ksession = self.get_keystone()
+        self.nova = client.Client(2, session=self.ksession)
+
         for hypervisor in self.nova.hypervisors.list():
             if self.hostname == hypervisor.hypervisor_hostname:
                 hv = {
