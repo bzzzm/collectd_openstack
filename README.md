@@ -1,2 +1,3 @@
-=== CollectD python plugin for openstack ===
+CollectD python plugin for openstack
+
 more to come...
